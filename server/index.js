@@ -14,27 +14,27 @@ app.set('view engine', 'jade');
 
 app.use(express.bodyParser());
 
-var mongoHost = 'localHost'; //A
+var mongoHost = 'localHost';
 var mongoPort = 27017; 
 var fileDriver;
 var collectionDriver;
  
-var mongoClient = new MongoClient(new Server(mongoHost, mongoPort)); //B
-mongoClient.open(function(err, mongoClient) { //C
+var mongoClient = new MongoClient(new Server(mongoHost, mongoPort)); 
+mongoClient.open(function(err, mongoClient) {
 	if (!mongoClient) {
 	    console.error("Error! Exiting... Must start MongoDB first");
-	    process.exit(1); //D
+	    process.exit(1);
 	}
-	var db = mongoClient.db("MyDatabase");  //E
+	var db = mongoClient.db("MyDatabase");
 	fileDriver = new FileDriver(db);
-	collectionDriver = new CollectionDriver(db); //F
+	collectionDriver = new CollectionDriver(db);
     });
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-	res.send('<html><body><h1>Hello World</h1></body></html>');
+	res.send('<html><body><h1></h1></body></html>');
     });
  
 app.post('/files', function(req,res) {fileDriver.handleUploadRequest(req,res);});
