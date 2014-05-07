@@ -34,7 +34,7 @@ mongoClient.open(function(err, mongoClient) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-	res.send('<html><body><h1></h1></body></html>');
+	res.send('<html><body><h1>Creating RESTfulAPI using Node.js + Express + mongoDB</h1></body></html>');
     });
  
 app.post('/files', function(req,res) {fileDriver.handleUploadRequest(req,res);});
